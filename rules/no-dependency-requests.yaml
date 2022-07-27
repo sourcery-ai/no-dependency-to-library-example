@@ -1,0 +1,54 @@
+rules:
+- id: no-dependency-requests-import
+  description: Do not use the `requests` library
+  pattern: import ${source}
+  condition: source.startswith("requests")
+  explanation: use `httpx` instead of `requests`
+  tests:
+    - match: import requests
+    - match: import requests.auth
+    - match: import requests as r
+    - match: import requests.auth as requests_auth
+    - no-match: import json, requests
+    - no-match: import json, requests, datetime
+
+- id: no-dependency-requests-from
+  description: Do not use the `requests` library
+  pattern: from ${source} import ${names+}
+  condition: source.startswith("requests")
+  explanation: use `httpx` instead of `requests`
+  tests:
+    - match: from requests import util
+    - match: from requests import util, auth 
+    - match: from requests.adapters import HTTPAdapter
+    - match: from requests.level.other import util, other
+    - match: from requests import util as u, auth as a
+    - match: from requests import *
+    - match: from requests.adapters import *
+
+- id: no-dependency-requests-import-after-others
+  description: Do not use the `requests` library
+  pattern: import ${left+}, requests as ${alias?}, ${right*}
+  explanation: use `httpx` instead of `requests`
+  tests:
+    - match: import json, requests
+    - match: import json, requests as whatever
+    - match: import json, requests, datetime
+    - match: import json, requests as r, datetime
+    - no-match: import requests
+    - no-match: import requests as r
+    - no-match: import requests, json
+
+- id: no-dependency-requests-import-before-others
+  description: Do not use the `requests` library
+  pattern: import requests as ${alias?}, ${right+}
+  explanation: use `httpx` instead of `requests`
+  tests:
+    - match: import requests, json
+    - match: import requests as r, json
+    - match: import requests as r, json as other
+    - no-match: import requests
+    - no-match: import requests as r
+    - no-match: import json, requests
+    - no-match: import json, requests, datetime
+    - no-match: import json, requests as r, datetime
