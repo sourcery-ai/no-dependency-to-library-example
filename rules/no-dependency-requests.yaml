@@ -1,21 +1,23 @@
 rules:
 - id: no-dependency-requests-import
   description: Do not use the `requests` library
-  pattern: import ${source}
-  condition: source.startswith("requests")
+  pattern: import ${module}
+  condition: module.matches_regex(r"^requests\b")
   explanation: use `httpx` instead of `requests`
   tests:
     - match: import requests
     - match: import requests.auth
     - match: import requests as r
     - match: import requests.auth as requests_auth
+    - no-match: import requestsx
+    - no-match: import requestsx as r
     - no-match: import json, requests
     - no-match: import json, requests, datetime
 
 - id: no-dependency-requests-from
   description: Do not use the `requests` library
-  pattern: from ${source} import ${names+}
-  condition: source.startswith("requests")
+  pattern: from ${module} import ${names+}
+  condition: module.matches_regex(r"^requests\b")
   explanation: use `httpx` instead of `requests`
   tests:
     - match: from requests import util
@@ -25,6 +27,8 @@ rules:
     - match: from requests import util as u, auth as a
     - match: from requests import *
     - match: from requests.adapters import *
+    - no-match: from requests2 import util
+    - no-match: from requests2.whatever import util
 
 - id: no-dependency-requests-import-after-others
   description: Do not use the `requests` library
