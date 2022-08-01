@@ -8,7 +8,7 @@ In this example, we'll flag any dependency to the library `requests`.
 
 In order for this example to work, you need:
 
-* The [sourcery-cli](https://pypi.org/project/sourcery-cli/) package from PyPI. Min. version: 0.12.5 (To be released soon.)
+* The [sourcery-cli](https://pypi.org/project/sourcery-cli/) package from PyPI. Min. version: 0.12.6 (Released on 2022-07-30.)
 * A Sourcery token with a team subscription.
   
 After installing Sourcery CLI, first you'll need to log in using the `login` command.
