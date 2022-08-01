@@ -54,6 +54,12 @@ code \
 > ~/sourcery_review_example_output.csv
 ```
 
+This should create a file with the same content as `example-output/sourcery_review_example_output.csv` .
+
+**Known issues**:
+
+Depending on the size of your terminal window, the last column (`description`) may get truncated.
+
 ### Options Used
 
 * `--config-path`: The path of the yaml file containing the rules. If not provided, `.sourcery.yaml` in the current directory is used.
@@ -69,5 +75,6 @@ These rules won't detect a dependency via:
 
 ## Roadmap: Coming Soon
 
+* Fix the issue with the occasionally truncated csv output.
 * Detect the edge case, where multiple packages are imported in 1 line and one of them is a subpackage of `requests` (see above)
 * Express `no-dependency` with 1 rule instead of 4.

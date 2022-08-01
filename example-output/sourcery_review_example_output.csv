@@ -1,0 +1,11 @@
+file,line,rule,description
+code/example_requests_get.py,1,no-dependency-requests-import,Do not use the `requests` library
+code/example_with_http_adapter.py,1,no-dependency-requests-from,Do not use the `requests` library
+code/example_with_http_adapter_star.py,1,no-dependency-requests-from,Do not use the `requests` library
+code/example_with_multiple_request_imports.py,1,no-dependency-requests-from,Do not use the `requests` library
+code/example_with_multiple_request_imports.py,2,no-dependency-requests-from,Do not use the `requests` library
+code/example_with_session.py,4,no-dependency-requests-from,Do not use the `requests` library
+code/example_with_session_alias.py,4,no-dependency-requests-from,Do not use the `requests` library
+code/example_with_session_star.py,4,no-dependency-requests-from,Do not use the `requests` library
+code/import_in_if_body.py,3,no-dependency-requests-import,Do not use the `requests` library
+code/multiple_imports_in_one_statement.py,1,no-dependency-requests-import-after-others,Do not use the `requests` library
