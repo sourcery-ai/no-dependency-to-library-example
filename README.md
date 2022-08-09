@@ -4,11 +4,11 @@ This is an example project to show how to flag dependencies to a library using S
 
 In this example, we'll flag any dependency to the library `requests`.
 
-## Prereuqisites
+## Prerequisites
 
 In order for this example to work, you need:
 
-* The [sourcery-cli](https://pypi.org/project/sourcery-cli/) package from PyPI. Min. version: 0.12.6 (Released on 2022-07-30.)
+* The [sourcery-cli](https://pypi.org/project/sourcery-cli/) with `pip install sourcery-cli`. Min. version: 0.12.6 (Released on 2022-07-30.)
 * A Sourcery token with a team subscription.
   
 After installing Sourcery CLI, first you'll need to log in using the `login` command.
